@@ -1,9 +1,12 @@
 ### Obtener todas las tiendas
-GET http://localhost:3000/stors
+GET http://localhost:3000/stores
+
+###
+GET http://localhost:3000/stores/1
 
 
 ### Crear una tienda
-POST http://localhost:3000/stors
+POST http://localhost:3000/stores
 Content-Type: application/json
 
 {
@@ -17,3 +20,6 @@ Content-Type: application/json
         }
     ]
 }
+
+### Actualizar una tienda
+PUT http://localhost:3000/stores/1

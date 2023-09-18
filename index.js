@@ -1,5 +1,5 @@
 const express = require('express');
-const stors = require('./stors.json');
+const stores = require('./stores.json');
 
 const app = express();
 app.disable('x-powered-by');
@@ -16,15 +16,15 @@ app.get('/', (req, res) => {
     res.send('<h1>Mi página</h1>');
 });
 
-app.get('/stors/:id', (req, res) => {
+app.get('/stores/:id', (req, res) => {
     const { id } = req.params;
-    const stor = stors.find(st => st.id === parseInt(id));
+    const store = stores.find(store => store.id === parseInt(id));
 
-    if (stor) {
+    if (store) {
         return res.json({
             "code": "F100",
             "message": "Se obtuvo la tienda",
-            "data": [stor]
+            "data": [store]
         });
     } else {
         return res.json({
@@ -35,15 +35,15 @@ app.get('/stors/:id', (req, res) => {
     }
 });
 
-app.get('/stors', (req, res) => {
+app.get('/stores', (req, res) => {
     res.json({
         "code": "F100",
         "message": "Se obtuvieron las tiendas",
-        "data": stors
+        "data": stores
     });
 });
 
-app.post('/stors', (req, res) => {
+app.post('/stores', (req, res) => {
     res.json({
         "code": "F100",
         "message": "",
