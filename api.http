@@ -10,15 +10,10 @@ POST http://localhost:3000/stores
 Content-Type: application/json
 
 {
-    "name": "",
-    "isActive": true,
+    "name": "Casa Salud del Llano",
     "address": "Carrera 4",
-    "products": [
-        {
-            "productId": 1,
-            "amount": 30
-        }
-    ]
+    "isActive": true,
+    "city": "Maní"
 }
 
 ### Actualizar una tienda

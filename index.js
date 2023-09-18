@@ -1,16 +1,17 @@
 const express = require('express');
+const crypto = require('crypto');
 const stores = require('./stores.json');
 
 const app = express();
 app.disable('x-powered-by');
 
 // Middlewares
-app.use((req, res, next) => {
-    console.log("Mi primer middleware");
-    next();
-});
+// app.use((req, res, next) => {
+//     console.log("Mi primer middleware");
+//     next();
+// });
 
-// app.use(express.json());
+app.use(express.json());
 
 app.get('/', (req, res) => {
     res.send('<h1>Mi página</h1>');
@@ -44,10 +45,27 @@ app.get('/stores', (req, res) => {
 });
 
 app.post('/stores', (req, res) => {
-    res.json({
+    const { 
+        name,
+        address,
+        isActive,
+        city
+    } = req.body;
+
+    const newStore = {
+        id: 2, // crypto.randomUUID(),
+        name,
+        address,
+        isActive,
+        city
+    };
+
+    stores.push(newStore)
+
+    res.status(201).json({
         "code": "F100",
         "message": "",
-        "data": []
+        "data": [stores]
     })
 });
 
