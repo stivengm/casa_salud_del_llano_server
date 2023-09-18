@@ -1,0 +1,9 @@
+[
+    {
+        "id": 1,
+        "name": "Casa Salud del Llano",
+        "address": "Carrera 4",
+        "isActive": true,
+        "city": "Aguazul Casanare"
+    }
+]
