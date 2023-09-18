@@ -1,0 +1,19 @@
+### Obtener todas las tiendas
+GET http://localhost:3000/stors
+
+
+### Crear una tienda
+POST http://localhost:3000/stors
+Content-Type: application/json
+
+{
+    "name": "",
+    "isActive": true,
+    "address": "Carrera 4",
+    "products": [
+        {
+            "productId": 1,
+            "amount": 30
+        }
+    ]
+}
