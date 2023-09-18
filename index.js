@@ -16,13 +16,32 @@ app.get('/', (req, res) => {
     res.send('<h1>Mi página</h1>');
 });
 
+app.get('/stors/:id', (req, res) => {
+    const { id } = req.params;
+    const stor = stors.find(st => st.id === parseInt(id));
+
+    if (stor) {
+        return res.json({
+            "code": "F100",
+            "message": "Se obtuvo la tienda",
+            "data": [stor]
+        });
+    } else {
+        return res.json({
+            "code": "F200",
+            "message": "No se ha encontrado la tienda",
+            "data": []
+        });
+    }
+});
+
 app.get('/stors', (req, res) => {
     res.json({
         "code": "F100",
         "message": "Se obtuvieron las tiendas",
         "data": stors
     });
-})
+});
 
 app.post('/stors', (req, res) => {
     res.json({
