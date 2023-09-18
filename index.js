@@ -32,7 +32,7 @@ app.post('/stors', (req, res) => {
 });
 
 app.use((req, res) => {
-    res.status(404).send({
+    res.status(200).send({
         "code": "F200",
         "message": "No se ha encontrado el recurso",
         "data": []
