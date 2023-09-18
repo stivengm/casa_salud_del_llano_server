@@ -3,19 +3,30 @@ const express = require('express');
 const app = express();
 app.disable('x-powered-by');
 
+// Middlewares
+app.use((req, res, next) => {
+    console.log("Mi primer middleware");
+    next();
+});
+
 app.get('/', (req, res) => {
     res.send('<h1>Mi página</h1>');
 });
 
 app.get('/stors', (req, res) => {
-    res.json({ test: "hola" });
+    res.json({
+        "code": "F100",
+        "message": "",
+        "data": []
+    });
 })
 
 app.post('/stors', (req, res) => {
-
-
-
-
+    res.json({
+        "code": "F100",
+        "message": "",
+        "data": []
+    })
 });
 
 app.use((req, res) => {
