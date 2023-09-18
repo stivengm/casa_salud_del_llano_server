@@ -1,4 +1,5 @@
 const express = require('express');
+const stors = require('./stors.json');
 
 const app = express();
 app.disable('x-powered-by');
@@ -18,8 +19,8 @@ app.get('/', (req, res) => {
 app.get('/stors', (req, res) => {
     res.json({
         "code": "F100",
-        "message": "",
-        "data": []
+        "message": "Se obtuvieron las tiendas",
+        "data": stors
     });
 })
 
