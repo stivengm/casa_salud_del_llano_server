@@ -1,5 +1,5 @@
 import express, { json } from 'express';
-import { storesRouter } from './routes/stores.js';
+import { storesRouter } from './src/routes/stores.js';
 
 const app = express();
 app.disable('x-powered-by');
@@ -30,5 +30,5 @@ app.use((req, res) => {
 
 const PORT = process.env.PORT ?? 3000;
 app.listen(PORT, () => {
-    console.log(`Server listening on http://localhost:${PORT}`);
+    console.log(`Server is running on http://localhost:${PORT}`);
 });

@@ -1,8 +1,8 @@
 import { Router } from 'express';
 import { readJSON } from '../utils/readJSON.js';
-import {validateStore} from '../schemas/stores.js';
+import { validateStore } from '../schemas/stores.js';
 
-const stores = readJSON('../stores.json');
+const stores = readJSON('../../stores.json');
 
 export const storesRouter = Router();
 
