@@ -1,10 +1,5 @@
 import express, { json } from 'express';
-import crypto from 'crypto';
-
-import { readJSON } from './utils/readJSON.js';
-
-const stores = readJSON('../stores.json');
-
+import { storesRouter } from './routes/stores.js';
 
 const app = express();
 app.disable('x-powered-by');
@@ -21,57 +16,9 @@ app.get('/', (req, res) => {
     res.send('<h1>Mi página</h1>');
 });
 
-app.get('/stores/:id', (req, res) => {
-    const { id } = req.params;
-    const store = stores.find(store => store.id === parseInt(id));
 
-    if (store) {
-        return res.json({
-            "code": "F100",
-            "message": "Se obtuvo la tienda",
-            "data": [store]
-        });
-    } else {
-        return res.json({
-            "code": "F200",
-            "message": "No se ha encontrado la tienda",
-            "data": []
-        });
-    }
-});
+app.use('/stores', storesRouter);
 
-app.get('/stores', (req, res) => {
-    res.json({
-        "code": "F100",
-        "message": "Se obtuvieron las tiendas",
-        "data": stores
-    });
-});
-
-app.post('/stores', (req, res) => {
-    const { 
-        name,
-        address,
-        isActive,
-        city
-    } = req.body;
-
-    const newStore = {
-        id: 2, // crypto.randomUUID(),
-        name,
-        address,
-        isActive,
-        city
-    };
-
-    stores.push(newStore)
-
-    res.status(201).json({
-        "code": "F100",
-        "message": "",
-        "data": [stores]
-    })
-});
 
 app.use((req, res) => {
     res.status(200).send({
