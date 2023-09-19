@@ -2,6 +2,8 @@ import { Router } from 'express';
 import { readJSON } from '../utils/readJSON.js';
 import { validateStore } from '../schemas/stores.js';
 
+import { StoresModel } from '../models/stores.js';
+
 const stores = readJSON('../../stores.json');
 
 export const storesRouter = Router();
@@ -14,9 +16,9 @@ storesRouter.get('/', (req, res) => {
     });
 });
 
-storesRouter.get('/:id', (req, res) => {
+storesRouter.get('/:id', async (req, res) => {
     const { id } = req.params;
-    const store = stores.find(store => store.id === parseInt(id));
+    const store = await StoresModel.getById({ id });
 
     if (store) {
         return res.json({
