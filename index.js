@@ -1,6 +1,10 @@
-const express = require('express');
-const crypto = require('crypto');
-const stores = require('./stores.json');
+import express, { json } from 'express';
+import crypto from 'crypto';
+
+import { readJSON } from './utils/readJSON.js';
+
+const stores = readJSON('../stores.json');
+
 
 const app = express();
 app.disable('x-powered-by');
@@ -11,7 +15,7 @@ app.disable('x-powered-by');
 //     next();
 // });
 
-app.use(express.json());
+app.use(json());
 
 app.get('/', (req, res) => {
     res.send('<h1>Mi página</h1>');
