@@ -7,8 +7,6 @@ const stores = readJSON('../../stores.json');
 export const storesRouter = Router();
 
 storesRouter.get('/', (req, res) => {
-    console.log("Hola mundo");
-    console.log(stores);
     res.json({
         "code": "F100",
         "message": "Se obtuvieron las tiendas",
